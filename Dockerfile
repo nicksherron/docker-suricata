@@ -8,7 +8,6 @@ RUN apt-get update &&  apt-get install -y libpcre3 libpcre3-dbg libpcre3-dev bui
                 make libmagic-dev python-pip
 
 
-#RUN add-apt-repository ppa:oisf/suricata-stable
 RUN apt-get update &&  apt-get install -y suricata
 RUN pip install --upgrade suricata-update
 #RUN suricata-update
@@ -23,8 +22,6 @@ RUN touch /var/log/cron.log
 RUN ( crontab -l ; echo "* 12 * * *  /usr/local/bin/suricata-update  2>> /var/log/cron.log") | crontab
 RUN service cron start
 
-#RUN ls /etc/cron.d/
-# Run the command on container startup
 RUN suricata-update
 
 CMD suricata -c /etc/suricata/suricata.yaml -i ${INTERFACE:-eth0}
