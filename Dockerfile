@@ -25,6 +25,7 @@ RUN service cron start
 
 #RUN ls /etc/cron.d/
 # Run the command on container startup
+RUN suricata-update
 
 CMD suricata -c /etc/suricata/suricata.yaml -i ${INTERFACE:-eth0}
 
