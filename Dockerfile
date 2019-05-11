@@ -14,7 +14,7 @@ RUN pip install --upgrade suricata-update
 #RUN suricata-update
 
 
-RUN apt-get -y install cron vim
+RUN apt-get -y install cron 
 
 RUN touch /var/log/cron.log
 
@@ -28,5 +28,4 @@ RUN service cron start
 RUN suricata-update
 
 CMD suricata -c /etc/suricata/suricata.yaml -i ${INTERFACE:-eth0}
-
 
